@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Car.iml" filepath="$PROJECT_DIR$/Car.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CarDubbo/CarDubbo.iml" filepath="$PROJECT_DIR$/CarDubbo/CarDubbo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CarDubbo/CarDubboInterface/CarDubboInterface.iml" filepath="$PROJECT_DIR$/CarDubbo/CarDubboInterface/CarDubboInterface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CarDubbo/CarDubboService/CarDubboService.iml" filepath="$PROJECT_DIR$/CarDubbo/CarDubboService/CarDubboService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CarMapper/CarMapper.iml" filepath="$PROJECT_DIR$/CarMapper/CarMapper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CarPOJO/CarPOJO.iml" filepath="$PROJECT_DIR$/CarPOJO/CarPOJO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CarUtils/CarUtils.iml" filepath="$PROJECT_DIR$/CarUtils/CarUtils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CarWeb/CarWeb.iml" filepath="$PROJECT_DIR$/CarWeb/CarWeb.iml" />
+    </modules>
+  </component>
+</project>

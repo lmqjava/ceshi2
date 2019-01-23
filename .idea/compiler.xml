@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="CarDubboInterface" />
+        <module name="CarDubboService" />
+        <module name="CarMapper" />
+        <module name="CarPOJO" />
+        <module name="CarUtils" />
+        <module name="CarWeb" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Car" target="1.8" />
+      <module name="CarDubbo" target="1.8" />
+      <module name="CarDubboInterface" target="1.8" />
+      <module name="CarDubboService" target="1.8" />
+      <module name="CarMapper" target="1.8" />
+      <module name="CarPOJO" target="1.8" />
+      <module name="CarUtils" target="1.8" />
+      <module name="CarWeb" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

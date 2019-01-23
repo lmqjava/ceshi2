@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.car.mapper.LbImageMapper" >
+  <resultMap id="BaseResultMap" type="com.car.pojo.LbImage" >
+    <id column="img_id" property="imgId" jdbcType="INTEGER" />
+    <result column="img_address" property="imgAddress" jdbcType="VARCHAR" />
+    <result column="lb_img" property="lbImg" jdbcType="VARCHAR" />
+  </resultMap>
+  	<!-- 通过id查询图片信息 -->
+	<select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select img_id,img_address img_address,lb_img lb_img 
+		from  lb_image	
+		where img_id = #{imgId}	
+	</select>
+	<!-- 查询图片信息 -->
+	<select id="selectAll" resultMap="BaseResultMap">
+		select img_id,img_address,lb_img  from lb_image		
+	</select>
+	<!-- 添加图片 -->
+	<insert id="insertLbImage">
+		insert into lb_image(img_address, lb_img ) values (#{imgAddress},#{lbImg})
+	</insert>
+	<!-- 修改图片 -->
+	<update id="updateLbImage" >
+		update lb_image
+		set 
+		 img_address = #{imgAddress},
+		 lb_img = #{lbImg}
+		where img_id = #{imgId}
+	</update>
+	<!-- 删除图片 -->
+	<delete id="deleteLbImage" parameterType="java.lang.Integer">
+		delete from lb_image
+    	where img_id = #{imgId}
+	</delete>
+  
+  <!-- <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    img_id, img_address, lb_img
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xm.pojo.LbImageExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from lb_image
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from lb_image
+    where img_id = #{imgId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from lb_image
+    where img_id = #{imgId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xm.pojo.LbImageExample" >
+    delete from lb_image
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xm.pojo.LbImage" >
+    insert into lb_image (img_id, img_address, lb_img
+      )
+    values (#{imgId,jdbcType=INTEGER}, #{imgAddress,jdbcType=VARCHAR}, #{lbImg,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xm.pojo.LbImage" >
+    insert into lb_image
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="imgId != null" >
+        img_id,
+      </if>
+      <if test="imgAddress != null" >
+        img_address,
+      </if>
+      <if test="lbImg != null" >
+        lb_img,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="imgId != null" >
+        #{imgId,jdbcType=INTEGER},
+      </if>
+      <if test="imgAddress != null" >
+        #{imgAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="lbImg != null" >
+        #{lbImg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xm.pojo.LbImageExample" resultType="java.lang.Integer" >
+    select count(*) from lb_image
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update lb_image
+    <set >
+      <if test="record.imgId != null" >
+        img_id = #{record.imgId,jdbcType=INTEGER},
+      </if>
+      <if test="record.imgAddress != null" >
+        img_address = #{record.imgAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lbImg != null" >
+        lb_img = #{record.lbImg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update lb_image
+    set img_id = #{record.imgId,jdbcType=INTEGER},
+      img_address = #{record.imgAddress,jdbcType=VARCHAR},
+      lb_img = #{record.lbImg,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xm.pojo.LbImage" >
+    update lb_image
+    <set >
+      <if test="imgAddress != null" >
+        img_address = #{imgAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="lbImg != null" >
+        lb_img = #{lbImg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where img_id = #{imgId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xm.pojo.LbImage" >
+    update lb_image
+    set img_address = #{imgAddress,jdbcType=VARCHAR},
+      lb_img = #{lbImg,jdbcType=VARCHAR}
+    where img_id = #{imgId,jdbcType=INTEGER}
+  </update> -->
+</mapper>

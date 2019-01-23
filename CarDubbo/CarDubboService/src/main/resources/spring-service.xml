@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+<context:component-scan base-package="com.car.service"></context:component-scan>
+<!-- 配置dubbo服务提供者的注册 -->
+  <!-- 配置服务的应用名 -->
+  <dubbo:application name="CarDubboService"/>
+  
+ 
+   <dubbo:registry address="zookeeper://10.12.153.175:2181"/>  
+  <!-- <dubbo:registry address="zookeeper://192.168.3.12:2181"/>   -->
+  
+  <dubbo:protocol name="dubbo" port="29012"/>
+  <!-- 对外暴露的服务接口 -->
+  <dubbo:service interface="com.car.service.ICarService" ref="carServiceImpl" />
+  <dubbo:service ref="contentServiceImpl" interface="com.car.service.ContentService" timeout="30000"/>
+    <dubbo:service ref="carfmServiceImpl" interface="com.car.service.CarfmService" timeout="30000"/>
+    <dubbo:service ref="selectAllImpl" interface="com.car.service.ISelectAll" timeout="30000"/>
+    <dubbo:service ref="userServiceImpl" interface="com.car.service.IUserService" timeout="30000"/>
+    <dubbo:service ref="salesmanServiceImpl" interface="com.car.service.ISalesmanService" timeout="30000"/>
+
+    <dubbo:provider delay="-1" timeout="4000" retries="0" />
+</beans>
